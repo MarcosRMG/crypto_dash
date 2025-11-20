@@ -8,8 +8,6 @@ import streamlit as st
 from streamlit_theme import st_theme
 from data_viz.crypto import date_interval
 from data_viz.crypto import plotly_time_series
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Analysis
 import ta
@@ -29,7 +27,7 @@ st.set_page_config(layout='wide')
 # --> Stocks Indexers
 crypto_composition = portfolio_crypto('https://coinmarketcap.com/all/views/all/')
 
-df_stock_crypto = pd.read_csv('./data/stocks/gold/crypto_trading.csv')
+df_stock_crypto = pd.read_csv('./data/crypto_trading.csv')
 df_stock_crypto['Date'] = pd.to_datetime(df_stock_crypto['Date'])
 df_stock_crypto.set_index('Date', inplace=True)
 df_stock_crypto_month = df_stock_crypto.resample('ME').median()
@@ -203,7 +201,7 @@ def main():
     # Add grid lines
     fig.update_yaxes(showgrid=True, gridcolor='rgba(200,200,200,0.2)')
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 if __name__ == '__main__':

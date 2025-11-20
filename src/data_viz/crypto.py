@@ -25,7 +25,7 @@ def date_interval(screen: str, language: str, view: str = '', forecast=False):
     last_year = actual_year - 1
     initial_date: pd.Timestamp = None
     end_date: pd.Timestamp = None
-    from utils.text_language.translator import selected_language
+    from data_viz.crypto import selected_language
 
     text_dict = selected_language(language)
 
